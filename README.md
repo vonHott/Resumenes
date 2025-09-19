@@ -1,2 +1,0 @@
-# Resumenes
-Resumenes para Grado

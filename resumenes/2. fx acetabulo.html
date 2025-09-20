@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fracturas de Acetábulo - Guía de Estudio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #2980b9;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .algorithm {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            white-space: pre-line;
+        }
+        
+        .key-point {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .question-block {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .question {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .answer {
+            padding: 10px;
+            background-color: white;
+            border-radius: 4px;
+        }
+        
+        .note {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 10px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .reference {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            text-align: right;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Síntesis de Fracturas de Acetábulo</h1>
+    
+    <div class="section">
+        <h2>Introducción</h2>
+        <p>Las fracturas de acetábulo son lesiones complejas y demandantes, generalmente resultantes de traumatismos de alta energía. Aunque relativamente infrecuentes (3 por cada 100,000 habitantes/año), su manejo requiere un conocimiento profundo de la anatomía tridimensional de la pelvis, los principios de reducción articular y las técnicas quirúrgicas especializadas. El objetivo del tratamiento es restaurar la congruencia articular y la estabilidad de la cadera para prevenir la artrosis postraumática y permitir una rehabilitación funcional temprana.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Epidemiología</h2>
+        <ul>
+            <li><strong>Incidencia</strong>: 3 pacientes por cada 100,000 por año.</li>
+            <li><strong>Distribución por sexo</strong>: Relación H:M de 3:1.</li>
+            <li><strong>Edad</strong>: Curva bimodal:
+                <ul>
+                    <li>Jóvenes (promedio 43 años) por trauma de alta energía.</li>
+                    <li>Adultos mayores por caídas de baja energía (aumento en las últimas décadas).</li>
+                </ul>
+            </li>
+            <li><strong>Mecanismo</strong>:
+                <ul>
+                    <li>Accidentes de tránsito: 66% (antes >80%).</li>
+                    <li>Caídas de >2 metros: 17.6%.</li>
+                    <li>Caídas a nivel: 8.2%.</li>
+                </ul>
+            </li>
+            <li><strong>Lesiones asociadas</strong>: Hasta 50% de los casos:
+                <ul>
+                    <li>Fracturas en otros sitios: 43%.</li>
+                    <li>Lesiones de extremidades: 35%.</li>
+                    <li>Lesiones craneales: 19%.</li>
+                    <li>Lesiones torácicas: 18%.</li>
+                    <li>Lesiones del nervio ciático: 13%.</li>
+                </ul>
+            </li>
+            <li><strong>Mortalidad</strong>: Entre 4% y 42% si se asocia con fractura de pelvis.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Anamnesis</h2>
+        <ul>
+            <li>Mecanismo de trauma (alta vs. baja energía).</li>
+            <li>Posición de la cadera en el momento del impacto.</li>
+            <li>Dolor inguinal o en la cadera, imposibilidad para deambular.</li>
+            <li>Síntomas neurológicos (pérdida de sensibilidad o movimiento en el pie).</li>
+            <li>Antecedentes de osteoporosis o artrosis previa.</li>
+            <li>Presencia de otras lesiones (TEC, abdominal, torácica).</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Examen Físico</h2>
+        <ul>
+            <li>Evaluación primaria ATLS (ABCDE).</li>
+            <li>Inspección: deformidad, equimosis, heridas, signos de Morel-Lavallée.</li>
+            <li>Palpación: dolor a la palpación de la pelvis, crepitación.</li>
+            <li>Evaluación neurológica focal:
+                <ul>
+                    <li>Nervio ciático (rama peronea: dorsiflexión y eversión del pie).</li>
+                    <li>Nervio glúteo superior (abducción de cadera).</li>
+                </ul>
+            </li>
+            <li>Pruebas de estabilidad articular bajo anestesia y fluoroscopia (en casos seleccionados).</li>
+            <li>Examen vascular: pulsos distales, signos de isquemia.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Imágenes</h2>
+        <h3>Radiografías</h3>
+        <ul>
+            <li><strong>Pelvis AP</strong>: evaluar:
+                <ul>
+                    <li>Línea ilioisquiática (columna posterior).</li>
+                    <li>Línea iliopúbica (columna anterior).</li>
+                    <li>Pared anterior y posterior.</li>
+                    <li>Techo acetabular.</li>
+                    <li>Gota de Keller.</li>
+                </ul>
+            </li>
+            <li><strong>Oblicua ilíaca (alar)</strong>:
+                <ul>
+                    <li>Columna posterior y pared anterior.</li>
+                </ul>
+            </li>
+            <li><strong>Oblicua obturatriz</strong>:
+                <ul>
+                    <li>Columna anterior y pared posterior.</li>
+                </ul>
+            </li>
+            <li><strong>Ángulos de techo acetabular (Roof arc angles)</strong>:
+                <ul>
+                    <li>>45° en las 3 proyecciones sugiere estabilidad.</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>Tomografía Computarizada (TAC)</h3>
+        <ul>
+            <li>Estudio gold standard para caracterización fracturia.</li>
+            <li>Evalúa:
+                <ul>
+                    <li>Fragmentos intraarticulares.</li>
+                    <li>Impactación marginal.</li>
+                    <li>Conminución.</li>
+                    <li>Lesiones asociadas (sacro, SI, cabeza femoral).</li>
+                    <li>Fracturas de pared posterior (medición de compromiso).</li>
+                </ul>
+            </li>
+            <li>Cortes axiales:
+                <ul>
+                    <li>Fracturas de columnas: línea horizontal.</li>
+                    <li>Fracturas transversas: rasgo vertical.</li>
+                    <li>Fracturas de pared: fracturas articulares parciales.</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>RMN, Cintigrafía o PET-CT</h3>
+        <ul>
+            <li>No son de rutina en el manejo agudo.</li>
+            <li>RMN puede useful en evaluación de lesiones de partes blandas o necrosis avascular tardía.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Clasificaciones</h2>
+        <h3>Judet y Letournel (1964)</h3>
+        
+        <h4>Fracturas Elementales (40-45%)</h4>
+        <ol>
+            <li><strong>Pared posterior</strong> (20-30%): Asociada a luxación posterior. "Signo de la gaviota".</li>
+            <li><strong>Columna posterior</strong>: Disrupción línea ilioisquiática.</li>
+            <li><strong>Pared anterior</strong>: Poco frecuente.</li>
+            <li><strong>Columna anterior</strong>: Frecuente en adultos mayores.</li>
+            <li><strong>Transversa</strong>: Disrupción de ambas columnas, agujero obturador intacto.</li>
+        </ol>
+        
+        <h4>Fracturas Asociadas (55-60%)</h4>
+        <ol>
+            <li><strong>Pared + columna posterior</strong>.</li>
+            <li><strong>Transversa + pared posterior</strong> (más frecuente).</li>
+            <li><strong>Tipo T</strong>: Transversa + fractura vertical.</li>
+            <li><strong>Columna anterior + hemitransversa posterior</strong>.</li>
+            <li><strong>Ambas columnas</strong>: "Acetábulo flotante", signo del espolón ("spur sign").</li>
+        </ol>
+        
+        <h3>Otras Clasificaciones</h3>
+        <ul>
+            <li>AO/OTA: Menos utilizada en la práctica clínica diaria.</li>
+            <li>La clasificación de Judet y Letournel es la más utilizada para planificación quirúrgica y comunicación.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Algoritmo de Manejo</h2>
+        <div class="algorithm">
+Paciente con trauma pélvico
+│
+└─→ ¿Estable hemodinámicamente?
+   │
+   ├─→ No → Manejo ATLS, priorizar pelvis inestable
+   │
+   └─→ Sí → Evaluación clínica y radiológica completa
+      │
+      └─→ ¿Luxación de cadera asociada?
+         │
+         ├─→ Sí → Reducción urgente bajo anestesia
+         │   │
+         │   └─→ ¿Estable?
+         │      │
+         │      ├─→ No → Tracción transesquelética
+         │      │
+         │      └─→ Sí → Evaluación definitiva
+         │
+         └─→ No → Evaluación definitiva
+            │
+            └─→ ¿Fractura estable? (Ang techo >45°, escalón <2mm)
+               │
+               ├─→ Sí → Tratamiento ortopédico
+               │
+               └─→ No → Tratamiento quirúrgico
+                  │
+                  └─→ Planificación preoperatoria: TAC, abordaje
+                     │
+                     └─→ Cirugía dentro de 3-5 días
+                        │
+                        └─→ Rehabilitación y seguimiento
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Tratamiento No Quirúrgico</h2>
+        <h3>Indicaciones</h3>
+        <ul>
+            <li>Fracturas no desplazadas o mínimamente desplazadas (<2mm).</li>
+            <li>Ángulos de techo >45° en las 3 proyecciones.</li>
+            <li>Articulación estable y congruente.</li>
+            <li>Pacientes con contraindicación quirúrgica.</li>
+        </ul>
+        
+        <h3>Plan de Tratamiento</h3>
+        <ul>
+            <li>Reposo relativo inicial (días a semanas).</li>
+            <li>Descarga estricta (6-8 semanas), luego carga parcial progresiva.</li>
+            <li>Control radiográfico seriado (semanas 1, 2, 4, 6, 12).</li>
+            <li>Profilaxis antitrombótica.</li>
+            <li>Rehabilitación: Movilización precoz de cadera y rodilla, fortalecimiento progresivo.</li>
+        </ul>
+        
+        <h3>Resultados</h3>
+        <ul>
+            <li>Supervivencia articular a 12 años: 94% en fracturas no desplazadas.</li>
+            <li>Bueno a excelente resultado funcional: 89%.</li>
+            <li>Mal resultado si escalón >2mm (supervivencia 60% a 12-15 años).</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Tratamiento Quirúrgico</h2>
+        <h3>Indicaciones</h3>
+        <ul>
+            <li>Luxofracturas irreductibles.</li>
+            <li>Compromiso del techo acetabular (ángulos de techo <45°).</li>
+            <li>Compromiso de pared posterior >20-50% (controversial).</li>
+            <li>Incongruencia articular o escalón >2mm.</li>
+            <li>Fragmentos intraarticulares libres.</li>
+            <li>Deterioro neurológico post-reducción.</li>
+            <li>Falla de tratamiento ortopédico.</li>
+        </ul>
+        
+        <h3>Técnicas Quirúrgicas</h3>
+        <h4>Reducción Abierta y Fijación Interna (RAFI)</h4>
+        <ul>
+            <li><strong>Abordaje anterior</strong> (Ilioinguinal, Stoppa):
+                <ul>
+                    <li>Indicado para columnas anterior, transversa, ambas columnas.</li>
+                    <li>Complicaciones: hernia, lesión nervio femorocutáneo, hematoma.</li>
+                </ul>
+            </li>
+            <li><strong>Abordaje posterior</strong> (Kocher-Langenbeck):
+                <ul>
+                    <li>Indicado para columnas/pared posterior, transversa, tipo T.</li>
+                    <li>Complicaciones: lesión ciático, osificación heterotópica (8-25%).</li>
+                </ul>
+            </li>
+            <li><strong>Abordajes combinados</strong>: Para fracturas complejas.</li>
+        </ul>
+        
+        <h4>Fijación Percutánea</h4>
+        <ul>
+            <li>Reservado para adultos mayores o pacientes de alto riesgo.</li>
+            <li>Ventajas: menor morbilidad, sangrado.</li>
+            <li>Desventajas: difícil reducción anatómica.</li>
+        </ul>
+        
+        <h4>Artroplastia Total de Cadera (ATC) Primaria</h4>
+        <ul>
+            <li>Indicada en adultos mayores (>60-65 años) con:
+                <ul>
+                    <li>Artrosis previa sintomática.</li>
+                    <li>Conminución severa o impacto marginal.</li>
+                    <li>Daño de la cabeza femoral.</li>
+                </ul>
+            </li>
+            <li>Requiere fijación estable previa de columnas.</li>
+        </ul>
+        
+        <h3>Timing Quirúrgico</h3>
+        <ul>
+            <li>Ideal: dentro de los primeros 3-5 días.</li>
+            <li>Urgencia: fracturas expuestas, compromiso vascular, luxación irreductible, deterioro neurológico.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Complicaciones</h2>
+        <h3>Agudas</h3>
+        <ul>
+            <li>Infección de herida (4.5%).</li>
+            <li>Lesión neurológica iatrogénica (6.5%: femoral cutáneo, ciático).</li>
+            <li>Trombosis venosa profunda (5.2%).</li>
+            <li>Sangrado (transfusión hasta 35-57% en fracturas combinadas).</li>
+        </ul>
+        
+        <h3>Crónicas</h3>
+        <ul>
+            <li>Artrosis postraumática (17.6%).</li>
+            <li>Osificación heterotópica (19%).</li>
+            <li>Necrosis avascular de la cabeza femoral (5%).</li>
+            <li>Pérdida de reducción (3.1%).</li>
+            <li>Conversión a ATC (10.5% a 3-5 años).</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Diagnósticos Diferenciales</h2>
+        <ul>
+            <li>Fracturas de pelvis (anillo anterior/posterior).</li>
+            <li>Luxación pura de cadera.</li>
+            <li>Fractura de cabeza femoral.</li>
+            <li>Contusión o hematoma profundo.</li>
+            <li>Fractura por estrés o insuficiencia (osteoporosis).</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Datos Importantes</h2>
+        <ul>
+            <li><strong>Corona mortis</strong>: anastomosis vascular en 40-82% de casos (80% venosa, 20% arterial). Ligar en abordajes anteriores.</li>
+            <li><strong>Signo de la gaviota</strong>: impactación marginal de pared posterior, mal pronóstico.</li>
+            <li><strong>Spur sign</strong>: patognomónico de fractura de ambas columnas.</li>
+            <li>La calidad de la reducción (<2mm de escalón) es el factor pronóstico más importante.</li>
+            <li>En adultos mayores, considerar ATC primaria vs. RAFI vs. percutánea según comorbilidades y calidad ósea.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Preguntas Clave para Examen de Grado (Basadas en Orthobullets)</h2>
+        
+        <div class="question-block">
+            <div class="question">1. ¿Cuál es la clasificación más utilizada para las fracturas de acetábulo y cuáles son sus dos categorías principales?</div>
+            <div class="answer">La clasificación de Judet y Letournel. Sus dos categorías principales son: fracturas elementales (5 tipos) y fracturas asociadas (5 tipos).</div>
+        </div>
+        
+        <div class="question-block">
+            <div class="question">2. ¿Cuáles son las indicaciones absolutas para el tratamiento quirúrgico de una fractura de acetábulo?</div>
+            <div class="answer">Luxación irreductible, compromiso del techo acetabular (ángulos de techo inadecuados), incongruencia articular >2mm, fragmentos intraarticulares libres, deterioro neurológico post-reducción y inestabilidad articular.</div>
+        </div>
+        
+        <div class="question-block">
+            <div class="question">3. Un paciente de 25 años sufre un accidente automovilístico ("dashboard injury"). ¿Qué tipo de fractura de acetábulo es más probable encontrar?</div>
+            <div class="answer">Fractura de pared posterior, frecuentemente asociada a una luxación posterior de cadera.</div>
+        </div>
+        
+        <div class="question-block">
+            <div class="question">4. ¿Qué abordaje quirúrgico es el de elección para una fractura de columna anterior y hemitransversa posterior?</div>
+            <div class="answer">Abordaje anterior (Ilioinguinal o Stoppa modificado).</div>
+        </div>
+        
+        <div class="question-block">
+            <div class="question">5. ¿Cuál es la complicación más frecuente reportada después de un abordaje de Kocher-Langenbeck?</div>
+            <div class="answer">Osificación heterotópica (reportada entre 8-25% de los casos).</div>
+        </div>
+        
+        <div class="question-block">
+            <div class="question">6. ¿Qué significa el "spur sign" en una radiografía obturatriz?</div>
+            <div class="answer">Es un signo radiológico patognomónico de una fractura de ambas columnas. Representa la porción intacta del ilion que queda desplazada medialmente, mientras el acetábulo "flota".</div>
+        </div>
+        
+        <div class="question-block">
+            <div class="question">7. ¿En qué porcentaje de pacientes con fractura de acetábulo se espera encontrar una lesión asociada del nervio ciático?</div>
+            <div class="answer">Aproximadamente en un 13% de los casos al momento del trauma. La rama peronea es la más comúnmente afectada.</div>
+        </div>
+        
+        <div class="question-block">
+            <div class="question">8. ¿Cuál es el factor pronóstico más importante para un buen resultado funcional a largo plazo después de una fractura de acetábulo?</div>
+            <div class="answer">La obtención de una reducción anatómica de la superficie articular, definida como un escalón articular menor a 2 milímetros.</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Verificación y Notas</h2>
+        <p><strong>Verificación con Fuentes Externas (Orthobullets, UpToDate, JBJS):</strong></p>
+        <p>La información presentada en este documento es consistente con los estándares actuales de manejo de fracturas acetabulares. La clasificación de Judet y Letournel, los principios de reducción anatómica y los criterios para tratamiento quirúrgico versus ortopédico están bien establecidos en la literatura. Los porcentajes de complicaciones y epidemiología concuerdan con las series grandes publicadas.</p>
+        
+        <p><strong>Posibles Correcciones al Documento Original:</strong></p>
+        <ul>
+            <li>El documento menciona una incidencia de lesión del nervio ciático del 13% en la epidemiología, pero luego en la evaluación clínica dice "hasta un 40%". Esto parece ser una discrepancia. La cifra del 13% (Matta) es la más citada para lesión al ingreso, mientras que el 40% podría incluir lesiones iatrogénicas o series más antiguas. Sería preciso aclarar esta diferencia.</li>
+            <li>El documento sugiere el uso rutinario de antibióticos en polvo. Si bien es una práctica emergente, la evidencia de alto nivel que la respalde aún es limitada. Se podría matizar esta recomendación.</li>
+            <li>En la sección de medición de la pared posterior, la controversia sobre el valor umbral (20% vs. 50%) podría explicarse con mayor detalle, haciendo hincapié en la necesidad de evaluación dinámica bajo fluoroscopia para tomar la decisión final.</li>
+        </ul>
+    </div>
+    
+    <div class="reference">
+        <p>Documento de estudio basado en Orthobullets, UpToDate y JBJS - Para fines educativos</p>
+    </div>
+</body>
+</html>

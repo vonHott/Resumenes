@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesiones de LCA y LCP - Guía Completa</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 5px solid var(--secondary);
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        h2 {
+            color: var(--dark);
+            padding-left: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        h3 {
+            color: var(--secondary);
+        }
+        
+        .intro {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .algorithm {
+            background-color: #e8f4f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .algorithm h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .treatment-box {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .treatment-box h4 {
+            color: var(--secondary);
+            margin-top: 0;
+        }
+        
+        .key-point {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .questions {
+            background-color: #e8f4f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        details {
+            margin: 1rem 0;
+            background-color: white;
+            border-radius: 6px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        .correction {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .highlight {
+            background-color: yellow;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Lesiones Aisladas de LCA y LCP</h1>
+            <p>Guía completa para el diagnóstico y tratamiento</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Introducción</h2>
+            <p>Las lesiones de los ligamentos cruzados anterior (LCA) y posterior (LCP) representan patologías frecuentes en la práctica traumatológica, especialmente en población joven y deportista. El LCA actúa como estabilizador primario de la traslación anterior de la tibia y secundario de la rotación, mientras que el LCP es el principal restrictor de la traslación posterior. Su manejo requiere un enfoque integral que considere aspectos anatómicos, biomecánicos, clínicos y de rehabilitación para optimizar resultados funcionales y prevenir complicaciones a largo plazo como la artrosis.</p>
+        </div>
+
+        <div class="section">
+            <h2>Epidemiología</h2>
+            <table>
+                <tr>
+                    <th>Aspecto</th>
+                    <th>LCA</th>
+                    <th>LCP</th>
+                </tr>
+                <tr>
+                    <td>Incidencia anual</td>
+                    <td>35-50 por 100,000 habitantes</td>
+                    <td>3-5% de todas las lesiones ligamentarias de rodilla</td>
+                </tr>
+                <tr>
+                    <td>Distribución por sexo</td>
+                    <td>Mujeres (2-8 veces más riesgo)</td>
+                    <td>Hombres (73-79%)</td>
+                </tr>
+                <tr>
+                    <td>Edad más afectada</td>
+                    <td>15-45 años (deportistas)</td>
+                    <td>20-40 años</td>
+                </tr>
+                <tr>
+                    <td>Mecanismo principal</td>
+                    <td>Deportes de pivote (fútbol, básquetbol, ski)</td>
+                    <td>Trauma de alta energía (accidentes vehiculares)</td>
+                </tr>
+                <tr>
+                    <td>Lesiones asociadas</td>
+                    <td>Menisco lateral (20-45%), LCM (19-38%)</td>
+                    <td>Multiligamentarias (hasta 95% de casos)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Anamnesis</h2>
+            <h3>Preguntas Clave</h3>
+            <ul>
+                <li>¿Cómo ocurrió la lesión? (Mecanismo preciso)</li>
+                <li>¿Escuchó o sintió un "chasquido" o "desgarro"? (40-60% de casos LCA)</li>
+                <li>¿Apareció hinchazón inmediata o en las primeras horas? (Hemartrosis aguda)</li>
+                <li>¿Ha tenido episodios de inestabilidad o "fallo" de la rodilla?</li>
+                <li>¿Dónde localiza el dolor? (Anterior vs posterior)</li>
+                <li>¿Ha tenido lesiones previas de rodilla?</li>
+                <li>¿Qué nivel de actividad deportiva realiza?</li>
+            </ul>
+            
+            <h3>Mecanismos Lesionales Clásicos</h3>
+            <div class="treatment-box">
+                <h4>LCA</h4>
+                <ul>
+                    <li>Valgo + rotación externa (mecanismo más frecuente)</li>
+                    <li>Hiperextensión forzada</li>
+                    <li>Desaceleración brusca con cambio de dirección</li>
+                    <li>Aterrizaje incorrecto después de un salto</li>
+                </ul>
+            </div>
+            
+            <div class="treatment-box">
+                <h4>LCP</h4>
+                <ul>
+                    <li>Golpe directo en tibia proximal con rodilla flexionada ("dashboard injury")</li>
+                    <li>Hiperflexión forzada de la rodilla</li>
+                    <li>Hiperextensión forzada</li>
+                    <li>Caída sobre talón con pie en flexión plantar</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Examen Físico</h2>
+            <h3>Evaluación General</h3>
+            <ul>
+                <li>Inspección: edema, hemartrosis, marcha antálgica</li>
+                <li>Rango de movimiento (comparar con contralateral)</li>
+                <li>Palpación de puntos dolorosos</li>
+                <li>Evaluación neurovascular</li>
+            </ul>
+            
+            <h3>Pruebas Específicas para LCA</h3>
+            <table>
+                <tr>
+                    <th>Prueba</th>
+                    <th>Procedimiento</th>
+                    <th>Sensibilidad</th>
+                    <th>Especificidad</th>
+                </tr>
+                <tr>
+                    <td>Lachman</td>
+                    <td>Rodilla a 20-30° flexión, traslación anterior tibial</td>
+                    <td>85%</td>
+                    <td>94%</td>
+                </tr>
+                <tr>
+                    <td>Cajón anterior</td>
+                    <td>Rodilla a 90° flexión, traslación anterior tibial</td>
+                    <td>52%</td>
+                    <td>88%</td>
+                </tr>
+                <tr>
+                    <td>Pivot Shift</td>
+                    <td>Valgo + rotación interna + flexión progresiva</td>
+                    <td>24-49%</td>
+                    <td>98%</td>
+                </tr>
+                <tr>
+                    <td>Prueba de Lever</td>
+                    <td>Extensión contra resistencia con rodilla flexionada</td>
+                    <td>78%</td>
+                    <td>92%</td>
+                </tr>
+            </table>
+            
+            <h3>Pruebas Específicas para LCP</h3>
+            <table>
+                <tr>
+                    <th>Prueba</th>
+                    <th>Procedimiento</th>
+                    <th>Sensibilidad</th>
+                    <th>Especificidad</th>
+                </tr>
+                <tr>
+                    <td>Cajón posterior</td>
+                    <td>Rodilla a 90° flexión, traslación posterior tibial</td>
+                    <td>90%</td>
+                    <td>99%</td>
+                </tr>
+                <tr>
+                    <td>Godfrey (Sag sign)</td>
+                    <td>Caderas y rodillas a 90°, observar hundimiento tibial</td>
+                    <td>46-100%</td>
+                    <td>95-100%</td>
+                </tr>
+                <tr>
+                    <td>Activación cuádriceps</td>
+                    <td>Contracción isométrica con rodilla a 60-90° flexión</td>
+                    <td>53-98%</td>
+                    <td>98-100%</td>
+                </tr>
+                <tr>
+                    <td>Dial test</td>
+                    <td>Rotación externa a 30° y 90° de flexión (EPL)</td>
+                    <td>8-39%</td>
+                    <td>92-100%</td>
+                </tr>
+            </table>
+            
+            <div class="key-point">
+                <p><strong>Punto clave:</strong> Siempre evaluar lesiones asociadas (meniscos, ligamentos colaterales, esquinas posterolateral/posteromedial) en ambos tipos de lesión.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Algoritmo de Manejo Detallado</h2>
+            
+            <div class="algorithm">
+                <h3>LCA - Algoritmo de Manejo</h3>
+                <ol>
+                    <li><strong>Evaluación inicial:</strong> Confirmar diagnóstico mediante examen físico y RM</li>
+                    <li><strong>Tratamiento agudo:</strong> RICE (Reposo, Hielo, Compresión, Elevación), analgesia, inmovilización breve</li>
+                    <li><strong>Decisión tratamiento definitivo:</strong>
+                        <ul>
+                            <li><strong>Pacientes jóvenes (&lt;40 años), deportistas, inestabilidad:</strong> Reconstrucción quirúrgica</li>
+                            <li><strong>Pacientes mayores (&gt;40 años), baja demanda, estables:</strong> Tratamiento conservador + rehabilitación</li>
+                            <li><strong>Lesiones parciales:</strong> Considerar tratamiento conservador inicial con reevaluación a 6 semanas</li>
+                        </ul>
+                    </li>
+                    <li><strong>Timing quirúrgico:</strong> Ideal entre 3 semanas y 5 meses post-lesión, cuando hay:
+                        <ul>
+                            <li>Rango de movimiento completo (especialmente extensión)</li>
+                            <li>Control muscular adecuado (especialmente cuádriceps)</li>
+                            <li>Resolución de inflamación aguda</li>
+                        </ul>
+                    </li>
+                    <li><strong>Selección de injerto:</strong> Personalizada según edad, deporte, laxitud articular</li>
+                    <li><strong>Rehabilitación postquirúrgica:</strong> Protocolo progresivo basado en hitos</li>
+                </ol>
+            </div>
+            
+            <div class="algorithm">
+                <h3>LCP - Algoritmo de Manejo</h3>
+                <ol>
+                    <li><strong>Evaluación inicial:</strong> Confirmar diagnóstico y grado de lesión (clínica, RM, radiografías con estrés)</li>
+                    <li><strong>Clasificación:</strong>
+                        <ul>
+                            <li><strong>Grado I-II (traslación &lt;10mm):</strong> Tratamiento conservador</li>
+                            <li><strong>Grado III (traslación &gt;10mm):</strong> Evaluar lesiones asociadas</li>
+                        </ul>
+                    </li>
+                    <li><strong>Decisiones de tratamiento:</strong>
+                        <ul>
+                            <li><strong>Aisladas grado I-II:</strong> Siempre conservador</li>
+                            <li><strong>Aisladas grado III:</strong> Controversial, generalmente conservador inicial</li>
+                            <li><strong>Combinadas con otras lesiones ligamentarias:</strong> Quirúrgico</li>
+                            <li><strong>Avulsiones óseas desplazadas:</strong> Reparación quirúrgica</li>
+                        </ul>
+                    </li>
+                    <li><strong>Tratamiento conservador:</strong> Inmovilización en extensión 2-4 semanas, rehabilitación progresiva</li>
+                    <li><strong>Tratamiento quirúrgico:</strong> Reconstrucción anatómica (1 o 2 bandas)</li>
+                    <li><strong>Rehabilitación:</strong> Protocolo más lento y cauteloso que en LCA</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Tratamiento No Quirúrgico (Ortopédico)</h2>
+            
+            <div class="treatment-box">
+                <h4>LCA - Tratamiento Conservador</h4>
+                <p><strong>Indicaciones:</strong> Pacientes de baja demanda, lesiones parciales, contraindicación quirúrgica, pacientes que rechazan cirugía.</p>
+                <p><strong>Protocolo:</strong></p>
+                <ol>
+                    <li><strong>Fase aguda (0-2 semanas):</strong> RICE, movilización temprana, recuperación de ROM completo</li>
+                    <li><strong>Fase de fortalecimiento (2-6 semanas):</strong> Ejercicios isométricos, cadena cerrada, propiocepción básica</li>
+                    <li><strong>Fase avanzada (6 semanas-3 meses):</strong> Fortalecimiento progresivo, entrenamiento neuromuscular, actividades funcionales</li>
+                    <li><strong>Fase de retorno deportivo (&gt;3 meses):</strong> Solo si estabilidad adecuada, pruebas funcionales satisfactorias</li>
+                </ol>
+                <p><strong>Órtesis:</strong> Uso controversial, posible beneficio en fase aguda y durante actividades de riesgo</p>
+            </div>
+            
+            <div class="treatment-box">
+                <h4>LCP - Tratamiento Conservador</h4>
+                <p><strong>Indicaciones:</strong> Lesiones aisladas grado I-II, algunas grado III, pacientes de baja demanda.</p>
+                <p><strong>Protocolo:</strong></p>
+                <ol>
+                    <li><strong>Inmovilización (2-4 semanas):</strong> Rodillera con restricción de extensión completa, descarga parcial</li>
+                    <li><strong>Recuperación de ROM (semanas 4-8):</strong> Flexión progresiva, evitar flexión &gt;90° inicialmente</li>
+                    <li><strong>Fortalecimiento (semanas 8-12):</strong> Énfasis en cuádriceps, evitar isquiotibiales inicialmente</li>
+                    <li><strong>Actividades funcionales (&gt;3 meses):</strong> Retorno gradual a actividades, evitando deportes de contacto</li>
+                </ol>
+                <p><strong>Órtesis:</strong> Rodillera funcional con mecanismo de asistencia para cajón anterior puede ser beneficiosa</p>
+            </div>
+            
+            <div class="key-point">
+                <p><strong>Punto clave:</strong> Solo el 30-40% de pacientes con lesión completa de LCA tratados conservadoramente lograrán retornar a deportes de pivote sin inestabilidad. En LCP, hasta el 80% de lesiones aisladas grado I-II tienen buen resultado con tratamiento conservador.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Tratamiento Quirúrgico</h2>
+            
+            <div class="treatment-box">
+                <h4>LCA - Técnicas Quirúrgicas</h4>
+                <p><strong>Indicaciones:</strong> Pacientes jóvenes (&lt;40 años), deportistas, inestabilidad persistente, lesiones completas, falla del tratamiento conservador.</p>
+                <p><strong>Opciones de injerto:</strong></p>
+                <ul>
+                    <li><strong>Hueso-tendón-hueso (HTH):</strong> Gold standard, mayor estabilidad inicial, mayor dolor anterior</li>
+                    <li><strong>Isquiotibiales (ST/G):</strong> Menor morbilidad, mayor debilidad isquiotibial, mayor elasticidad</li>
+                    <li><strong>Cuadricipital:</strong> Buena resistencia, opción en revisiones, menor dolor anterior que HTH</li>
+                    <li><strong>Aloinjerto:</strong> Sin morbilidad donante, mayor tasa de falla en jóvenes</li>
+                </ul>
+                <p><strong>Técnicas:</strong></p>
+                <ul>
+                    <li><strong>Reconstrucción anatómica single-bundle:</strong> Técnica más común, reproduce banda AM</li>
+                    <li><strong>Reconstrucción double-bundle:</strong> Reproduce bandas AM y PL, mejor control rotacional teórico</li>
+                    <li><strong>Tenodesis anterolateral:</strong> Adjunto en casos de alta demanda rotacional, revisiones, hiperlaxitud</li>
+                </ul>
+                <p><strong>Rehabilitación postquirúrgica:</strong> Protocolo acelerado, carga precoz, retorno deportivo a 9-12 meses</p>
+            </div>
+            
+            <div class="treatment-box">
+                <h4>LCP - Técnicas Quirúrgicas</h4>
+                <p><strong>Indicaciones:</strong> Lesiones grado III sintomáticas, lesiones multiligamentarias, avulsiones óseas desplazadas, falla del tratamiento conservador.</p>
+                <p><strong>Opciones de injerto:</strong></p>
+                <ul>
+                    <li><strong>Hueso-tendón-hueso (HTH):</strong> Buena resistencia, fijación ósea sólida</li>
+                    <li><strong>Isquiotibiales:</strong> Múltiples configuraciones posibles (doble banda)</li>
+                    <li><strong>Tendón de Aquiles (aloinjerto):</strong> Gran tamaño, bloque óseo para fijación tibial</li>
+                    <li><strong>Cuadricipital:</strong> Opción en revisiones o casos complejos</li>
+                </ul>
+                <p><strong>Técnicas:</strong></p>
+                <ul>
+                    <li><strong>Transtibial:</strong> Técnica tradicional, riesgo de "killer turn" (ángulo agudo del injerto)</li>
+                    <li><strong>Inlay tibial:</strong> Fijación directa en tibia, evita ángulo agudo, posible mejor integración</li>
+                    <li><strong>Reconstrucción single-bundle:</strong> Reproduce banda AL (más común)</li>
+                    <li><strong>Reconstrucción double-bundle:</strong> Reproduce bandas AL y PM, mejor biomecánica teórica</li>
+                </ul>
+                <p><strong>Rehabilitación postquirúrgica:</strong> Protocolo más lento, protección de la reconstrucción, retorno deportivo a 9-12 meses</p>
+            </div>
+            
+            <div class="key-point">
+                <p><strong>Punto clave:</strong> La elección de técnica e injerto debe individualizarse según las características del paciente, lesión asociadas y experiencia del cirujano. En LCP, la técnica inlay muestra teóricamente menor riesgo de falla por evitar el "killer turn", aunque no hay evidencia concluyente de superioridad clínica.</p>
+            </div>
+        </div>
+
+        <div class="questions">
+            <h2>Preguntas Clave para Examen</h2>
+            
+            <details>
+                <summary>1. ¿Cuál es el principal estabilizador secundario de la rotación interna de la rodilla en flexión?</summary>
+                <p>El ligamento colateral medial (LCM) y las estructuras de la esquina posteromedial, especialmente el ligamento oblicuo posterior (POL).</p>
+            </details>
+            
+            <details>
+                <summary>2. ¿Qué injerto tiene mayor tasa de rerrotura en reconstrucción primaria de LCA en pacientes jóvenes?</summary>
+                <p>Los aloinjertos, especialmente si están irradiados, presentan hasta 3 veces mayor tasa de falla comparado con autoinjertos en pacientes jóvenes y activos.</p>
+            </details>
+            
+            <details>
+                <summary>3. ¿Cuál es el criterio más importante para indicar tenodesis anterolateral en reconstrucción de LCA?</summary>
+                <p>Pivot shift grado 2 o 3 bajo anestesia, especialmente en pacientes jóvenes (&lt;25 años) que practican deportes de pivote y contacto. Otros factores: hiperlaxitud, revisiones, lesión del ligamento anterolateral.</p>
+            </details>
+            
+            <details>
+                <summary>4. ¿En qué ángulo de flexión se tensa principalmente la banda posteromedial del LCP?</summary>
+                <p>La banda posteromedial del LCP se tensa principalmente en extensión (0-30° de flexión), mientras que la banda anterolateral lo hace en flexión (70-90°).</p>
+            </details>
+            
+            <details>
+                <summary>5. ¿Qué hallazgo en RM es altamente sugerente de lesión crónica del LCP?</summary>
+                <p>Un ligamento continuo pero adelgazado o con señal heterogénea, junto con traslación posterior tibial evidente en radiografías con estrés. La atrofia ligamentaria y la presencia de quistes mucoides también son característicos.</p>
+            </details>
+        </div>
+
+        <div class="correction">
+            <h2>Comprobación y Actualizaciones</h2>
+            <p>Tras revisar fuentes actualizadas (Orthobullets, AAOS, JISAKOS, revistas de cirugía ortopédica), se confirma la mayoría de la información presentada. Sin embargo, se sugieren las siguientes actualizaciones:</p>
+            <ul>
+                <li>La tasa de rerrotura de LCA en autoinjertos es actualmente de 5-8%, y hasta 15% en aloinjertos en menores de 25 años.</li>
+                <li>El tendón cuadricipital está ganando popularidad como autoinjerto por su menor morbilidad donante y buen tamaño, con resultados comparables a HTH e isquiotibiales.</li>
+                <li>La pendiente tibial posterior (&gt;12°) se reconoce como factor de riesgo importante para falla de LCA, considerándose osteotomía de deflexión en casos seleccionados.</li>
+                <li>En LCP, la reconstrucción en doble banda muestra mejor control rotacional en estudios biomecánicos, aunque la evidencia clínica sigue siendo limitada.</li>
+                <li>El uso de injerto ipsilateral vs contralateral en reconstrucción de LCA no muestra diferencias significativas en resultados funcionales.</li>
+                <li>La rehabilitación basada en criterios (no en tiempo) para retorno deportivo reduce la tasa de rerroturas.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

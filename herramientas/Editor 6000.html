@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Bidireccional de HTML Mejorado</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h1 i {
+            font-size: 1.8rem;
+        }
+        
+        .main-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .secondary-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-left: auto;
+        }
+        
+        button {
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        button i {
+            font-size: 1.1rem;
+        }
+        
+        #download-btn {
+            background-color: #27ae60;
+        }
+        
+        #download-btn:hover {
+            background-color: #219653;
+        }
+        
+        #clear-btn {
+            background-color: #e74c3c;
+        }
+        
+        #clear-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .editor-container {
+            display: flex;
+            flex: 1;
+            border-top: 1px solid #eee;
+            overflow: hidden;
+        }
+        
+        .code-editor, .preview {
+            flex: 1;
+            overflow: auto;
+            padding: 0;
+            position: relative;
+        }
+        
+        .code-editor {
+            border-right: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .editor-header {
+            padding: 10px 15px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .editor-header h3 {
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        .editor-options {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .zoom-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .zoom-controls button {
+            padding: 5px 10px;
+            font-size: 0.9rem;
+        }
+        
+        #html-code {
+            width: 100%;
+            height: 100%;
+            padding: 15px 15px 15px 55px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            border: none;
+            resize: none;
+            tab-size: 4;
+            -moz-tab-size: 4;
+            white-space: pre;
+            overflow-wrap: normal;
+            overflow-x: auto;
+            background-color: #282c34;
+            color: #abb2bf;
+            flex: 1;
+        }
+        
+        .preview {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .preview-header {
+            padding: 10px 15px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .preview-header h3 {
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        .preview-options {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .highlight-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .preview-content {
+            width: 100%;
+            height: 100%;
+            padding: 15px;
+            overflow: auto;
+            flex: 1;
+        }
+        
+        .line-numbers {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 100%;
+            padding: 15px 5px;
+            background-color: #21252b;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: right;
+            color: #5c6370;
+            border-right: 1px solid #181a1f;
+            overflow: hidden;
+            user-select: none;
+        }
+        
+        .drop-zone {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(41, 128, 185, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .drop-zone.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .drop-zone i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background-color: #27ae60;
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Context menu styles */
+        .context-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 200px;
+        }
+        
+        .context-menu button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 8px 15px;
+            background: none;
+            border: none;
+            color: #333;
+            border-radius: 0;
+            font-weight: normal;
+            justify-content: flex-start;
+        }
+        
+        .context-menu button:hover {
+            background-color: #f0f0f0;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .context-menu hr {
+            margin: 5px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Navigation panel */
+        .navigation-panel {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -3px 0 15px rgba(0, 0, 0, 0.15);
+            z-index: 1001;
+            transition: right 0.3s;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .navigation-panel.active {
+            right: 0;
+        }
+        
+        .navigation-panel h3 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .close-nav {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .nav-item {
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .toggle-nav {
+            position: fixed;
+            top: 70px;
+            right: 0;
+            background-color: #2c3e50;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px 0 0 4px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Search box */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+        
+        .search-box input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 150px;
+        }
+        
+        .search-box button {
+            padding: 5px;
+            background: none;
+            color: #555;
+        }
+        
+        .search-box button:hover {
+            background: none;
+            color: #3498db;
+        }
+        
+        /* Highlight styles */
+        .highlight-yellow {
+            background-color: #ffff00 !important;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        .highlight-green {
+            background-color: #90ee90 !important;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        .highlight-blue {
+            background-color: #add8e6 !important;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        .current-line {
+            background-color: #2c3e50;
+            position: absolute;
+            left: 40px;
+            width: calc(100% - 40px);
+            pointer-events: none;
+        }
+        
+        /* Nuevos estilos para el modal de imagen */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* Estilos para imágenes en el contenido */
+        .preview-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+            display: block;
+        }
+
+        .preview-content img.align-left {
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+
+        .preview-content img.align-right {
+            float: right;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .preview-content img.align-center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .preview-content img.size-small {
+            max-width: 200px;
+        }
+
+        .preview-content img.size-medium {
+            max-width: 400px;
+        }
+
+        .preview-content img.size-large {
+            max-width: 600px;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Estilos para tablas */
+        .preview-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .preview-content th, .preview-content td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .preview-content th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+        
+        .preview-content tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .preview-content tr:hover {
+            background-color: #f0f0f0;
+        }
+        
+        /* Estilos para el modal de tabla */
+        .table-grid {
+            display: grid;
+            gap: 5px;
+            margin: 15px 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .table-grid input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 1024px) {
+            .editor-container {
+                flex-direction: column;
+            }
+            
+            .code-editor {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                height: 40vh;
+            }
+            
+            .preview {
+                height: 40vh;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .main-controls, .secondary-controls {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .navigation-panel {
+                width: 250px;
+                right: -250px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-code"></i> Editor Bidireccional de HTML Mejorado</h1>
+            <div class="main-controls">
+                <button id="load-btn">
+                    <i class="fas fa-folder-open"></i> Cargar HTML
+                </button>
+                <button id="download-btn">
+                    <i class="fas fa-download"></i> Descargar
+                </button>
+                <button id="clear-btn">
+                    <i class="fas fa-broom"></i> Limpiar
+                </button>
+            </div>
+            <div class="secondary-controls">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Buscar...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button id="nav-btn">
+                    <i class="fas fa-list"></i> Navegación
+                </button>
+                <button id="fullscreen-btn">
+                    <i class="fas fa-expand"></i> Pantalla Completa
+                </button>
+            </div>
+        </header>
+        
+        <div class="editor-container">
+            <div class="code-editor">
+                <div class="editor-header">
+                    <h3>Editor de Código</h3>
+                    <div class="editor-options">
+                        <div class="zoom-controls">
+                            <button id="zoom-out"><i class="fas fa-minus"></i></button>
+                            <span id="zoom-level">100%</span>
+                            <button id="zoom-in"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="line-numbers" id="line-numbers">1</div>
+                <div class="current-line" id="current-line"></div>
+                <textarea id="html-code" placeholder="Escribe tu código HTML aquí..."><!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .highlight {
+            background-color: #ffff00;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido al Editor Bidireccional Mejorado</h1>
+    <p>Este es un ejemplo de contenido editable. ¡Haz clic en cualquier texto para editarlo!</p>
+    <p>Los cambios que realices se reflejarán inmediatamente en el editor de código.</p>
+    <p>Puedes <span class="highlight">arrastrar y soltar</span> archivos HTML en el editor o usar el botón de cargar.</p>
+    <h2>Características nuevas</h2>
+    <p>Ahora tienes más herramientas para estudiar:</p>
+    <ul>
+        <li>Zoom para agrandar el texto</li>
+        <li>Menú contextual con opciones de formato</li>
+        <li>Panel de navegación para saltar entre secciones</li>
+        <li>Búsqueda de texto</li>
+        <li>Modo pantalla completa</li>
+        <li>Función "Ver en código" desde el menú contextual</li>
+        <li>Inserción de tablas personalizadas</li>
+    </ul>
+    <h2>Ejemplo de tabla</h2>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Ciudad</th>
+        </tr>
+        <tr>
+            <td>Juan Pérez</td>
+            <td>28</td>
+            <td>Madrid</td>
+        </tr>
+        <tr>
+            <td>María García</td>
+            <td>32</td>
+            <td>Barcelona</td>
+        </tr>
+        <tr>
+            <td>Carlos López</td>
+            <td>45</td>
+            <td>Valencia</td>
+        </tr>
+    </table>
+</body>
+</html></textarea>
+            </div>
+            
+            <div class="preview">
+                <div class="preview-header">
+                    <h3>Vista Previa</h3>
+                </div>
+                <div class="preview-content" id="preview"></div>
+            </div>
+        </div>
+        
+        <div class="drop-zone" id="drop-zone">
+            <i class="fas fa-file-upload"></i>
+            <p>Suelta tu archivo HTML aquí</p>
+        </div>
+        
+        <footer>
+            <p>Editor Bidireccional de HTML Mejorado - Ideal para estudiar con múltiples resúmenes</p>
+        </footer>
+    </div>
+
+    <!-- Navigation Panel -->
+    <div class="navigation-panel" id="navigation-panel">
+        <h3>Navegación de Contenido
+            <button class="close-nav" id="close-nav">&times;</button>
+        </h3>
+        <div id="nav-items"></div>
+    </div>
+    <div class="toggle-nav" id="toggle-nav">
+        <i class="fas fa-chevron-left"></i>
+    </div>
+
+    <!-- Context Menu -->
+    <div class="context-menu" id="context-menu">
+        <button data-action="bold"><i class="fas fa-bold"></i> Negrita</button>
+        <button data-action="highlight-yellow"><i class="fas fa-highlighter"></i> Resaltar amarillo</button>
+        <button data-action="highlight-green"><i class="fas fa-highlighter"></i> Resaltar verde</button>
+        <button data-action="highlight-blue"><i class="fas fa-highlighter"></i> Resaltar azul</button>
+        <hr>
+        <button data-action="insert-image"><i class="fas fa-image"></i> Insertar imagen</button>
+        <button data-action="insert-table"><i class="fas fa-table"></i> Insertar tabla</button>
+        <hr>
+        <button data-action="show-in-code"><i class="fas fa-code"></i> Ver en código</button>
+        <hr>
+        <button data-action="remove-format"><i class="fas fa-eraser"></i> Quitar formato</button>
+    </div>
+
+    <!-- Modal para insertar imagen -->
+    <div class="modal" id="image-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Insertar Imagen</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="image-url">URL de la imagen</label>
+                    <input type="url" id="image-url" placeholder="https://ejemplo.com/imagen.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="image-alt">Texto alternativo (descripción)</label>
+                    <input type="text" id="image-alt" placeholder="Descripción de la imagen">
+                </div>
+                <div class="form-group">
+                    <label for="image-align">Alineación</label>
+                    <select id="image-align">
+                        <option value="default">Por defecto</option>
+                        <option value="left">Izquierda</option>
+                        <option value="center">Centro</option>
+                        <option value="right">Derecha</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="image-caption">Añadir pie de foto</label>
+                    <input type="text" id="image-caption" placeholder="Texto del pie de foto (opcional)">
+                </div>
+                <div class="form-group">
+                    <label for="image-size">Tamaño</label>
+                    <select id="image-size">
+                        <option value="default">Por defecto</option>
+                        <option value="small">Pequeño</option>
+                        <option value="medium">Mediano</option>
+                        <option value="large">Grande</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-image">Cancelar</button>
+                <button id="insert-image-btn" style="background-color: #27ae60;">Insertar Imagen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para insertar tabla -->
+    <div class="modal" id="table-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Insertar Tabla</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="table-rows">Filas</label>
+                    <input type="number" id="table-rows" min="1" max="20" value="3">
+                </div>
+                <div class="form-group">
+                    <label for="table-cols">Columnas</label>
+                    <input type="number" id="table-cols" min="1" max="10" value="3">
+                </div>
+                <div class="form-group">
+                    <label>Contenido de la tabla</label>
+                    <div id="table-grid" class="table-grid"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-table">Cancelar</button>
+                <button id="insert-table-btn" style="background-color: #27ae60;">Insertar Tabla</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        <p><i class="fas fa-check-circle"></i> Archivo cargado correctamente</p>
+    </div>
+
+    <input type="file" id="file-input" accept=".html,.htm" style="display: none;">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const htmlCode = document.getElementById('html-code');
+            const preview = document.getElementById('preview');
+            const clearBtn = document.getElementById('clear-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            const loadBtn = document.getElementById('load-btn');
+            const fileInput = document.getElementById('file-input');
+            const lineNumbers = document.getElementById('line-numbers');
+            const dropZone = document.getElementById('drop-zone');
+            const notification = document.getElementById('notification');
+            const zoomInBtn = document.getElementById('zoom-in');
+            const zoomOutBtn = document.getElementById('zoom-out');
+            const zoomLevel = document.getElementById('zoom-level');
+            const contextMenu = document.getElementById('context-menu');
+            const navPanel = document.getElementById('navigation-panel');
+            const toggleNav = document.getElementById('toggle-nav');
+            const navBtn = document.getElementById('nav-btn');
+            const closeNav = document.getElementById('close-nav');
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            const currentLine = document.getElementById('current-line');
+            
+            // Variables para el modal de imagen
+            const imageModal = document.getElementById('image-modal');
+            const imageUrlInput = document.getElementById('image-url');
+            const imageAltInput = document.getElementById('image-alt');
+            const imageAlignSelect = document.getElementById('image-align');
+            const imageCaptionInput = document.getElementById('image-caption');
+            const imageSizeSelect = document.getElementById('image-size');
+            const insertImageBtn = document.getElementById('insert-image-btn');
+            const cancelImageBtn = document.getElementById('cancel-image');
+            
+            // Variables para el modal de tabla
+            const tableModal = document.getElementById('table-modal');
+            const tableRowsInput = document.getElementById('table-rows');
+            const tableColsInput = document.getElementById('table-cols');
+            const tableGrid = document.getElementById('table-grid');
+            const insertTableBtn = document.getElementById('insert-table-btn');
+            const cancelTableBtn = document.getElementById('cancel-table');
+            
+            const closeModalBtns = document.querySelectorAll('.close-modal');
+            
+            let currentZoom = 100;
+            let currentSelectedElement = null;
+            let isFullscreen = false;
+            let lastSelection = null;
+            
+            // Actualizar números de línea
+            function updateLineNumbers() {
+                const lines = htmlCode.value.split('\n');
+                lineNumbers.innerHTML = '';
+                for (let i = 1; i <= lines.length; i++) {
+                    lineNumbers.innerHTML += i + '<br>';
+                }
+            }
+            
+            // Actualizar vista previa
+            function updatePreview() {
+                preview.innerHTML = htmlCode.value;
+                
+                // Hacer que el contenido sea editable y agregar event listeners
+                preview.setAttribute('contenteditable', 'true');
+                preview.addEventListener('input', updateCodeFromPreview);
+                preview.addEventListener('blur', updateCodeFromPreview);
+                
+                // Actualizar panel de navegación
+                updateNavigationPanel();
+                
+                // Agregar event listener para clic derecho
+                addRightClickListeners();
+            }
+            
+            // Mostrar notificación
+            function showNotification(message) {
+                notification.querySelector('p').innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+            
+            // Cargar archivo HTML
+            function loadFile(file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    htmlCode.value = e.target.result;
+                    updateLineNumbers();
+                    updatePreview();
+                    showNotification('Archivo cargado correctamente');
+                    
+                    // Salir del modo pantalla completa si está activo
+                    if (isFullscreen) {
+                        toggleFullscreen();
+                    }
+                };
+                
+                reader.onerror = function() {
+                    showNotification('Error al cargar el archivo');
+                };
+                
+                reader.readAsText(file);
+            }
+            
+            // Funcionalidad de zoom
+            function adjustZoom(level) {
+                currentZoom = level;
+                zoomLevel.textContent = `${currentZoom}%`;
+                htmlCode.style.fontSize = `${14 * (currentZoom / 100)}px`;
+                lineNumbers.style.fontSize = `${14 * (currentZoom / 100)}px`;
+            }
+            
+            // Menú contextual
+            function showContextMenu(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                contextMenu.style.display = 'block';
+                contextMenu.style.top = `${e.pageY}px`;
+                contextMenu.style.left = `${e.pageX}px`;
+                
+                // Guardar el elemento seleccionado
+                currentSelectedElement = e.target;
+                
+                // Guardar la selección actual
+                lastSelection = window.getSelection();
+            }
+            
+            function hideContextMenu() {
+                contextMenu.style.display = 'none';
+            }
+            
+            function handleContextMenuAction(action) {
+                if (action === 'insert-image') {
+                    showImageModal();
+                    hideContextMenu();
+                    return;
+                }
+                
+                if (action === 'insert-table') {
+                    showTableModal();
+                    hideContextMenu();
+                    return;
+                }
+                
+                if (action === 'show-in-code') {
+                    showInCode();
+                    hideContextMenu();
+                    return;
+                }
+                
+                if (lastSelection && !lastSelection.isCollapsed) {
+                    const range = lastSelection.getRangeAt(0);
+                    const selectedText = range.toString();
+                    
+                    if (action === 'bold') {
+                        document.execCommand('bold', false, null);
+                    } else if (action.startsWith('highlight-')) {
+                        const color = action.split('-')[1];
+                        const span = document.createElement('span');
+                        span.classList.add(`highlight-${color}`);
+                        span.textContent = selectedText;
+                        range.deleteContents();
+                        range.insertNode(span);
+                    } else if (action === 'remove-format') {
+                        document.execCommand('removeFormat', false, null);
+                    }
+                    
+                    updateCodeFromPreview();
+                }
+                
+                hideContextMenu();
+            }
+            
+            // Función para mostrar el modal de imagen
+            function showImageModal() {
+                imageModal.style.display = 'flex';
+                imageUrlInput.value = '';
+                imageAltInput.value = '';
+                imageAlignSelect.value = 'default';
+                imageCaptionInput.value = '';
+                imageSizeSelect.value = 'default';
+                imageUrlInput.focus();
+            }
+            
+            // Función para ocultar el modal de imagen
+            function hideImageModal() {
+                imageModal.style.display = 'none';
+            }
+            
+            // Función para insertar la imagen en el contenido
+            function insertImage() {
+                const url = imageUrlInput.value.trim();
+                const alt = imageAltInput.value.trim() || 'Imagen';
+                const align = imageAlignSelect.value;
+                const caption = imageCaptionInput.value.trim();
+                const size = imageSizeSelect.value;
+                
+                if (!url) {
+                    showNotification('Por favor, introduce una URL válida');
+                    return;
+                }
+                
+                let imgHtml = '';
+                let alignClass = '';
+                let sizeClass = '';
+                
+                // Determinar la clase de alineación
+                if (align === 'left') alignClass = 'align-left';
+                else if (align === 'right') alignClass = 'align-right';
+                else if (align === 'center') alignClass = 'align-center';
+                
+                // Determinar la clase de tamaño
+                if (size === 'small') sizeClass = 'size-small';
+                else if (size === 'medium') sizeClass = 'size-medium';
+                else if (size === 'large') sizeClass = 'size-large';
+                
+                // Crear el HTML de la imagen
+                imgHtml = `<img src="${url}" alt="${alt}" class="${alignClass} ${sizeClass}">`;
+                
+                // Añadir pie de foto si se proporciona
+                if (caption) {
+                    imgHtml += `<div class="image-caption">${caption}</div>`;
+                }
+                
+                // Insertar la imagen en la posición de la selección
+                if (lastSelection && !lastSelection.isCollapsed) {
+                    const range = lastSelection.getRangeAt(0);
+                    range.deleteContents();
+                    const div = document.createElement('div');
+                    div.innerHTML = imgHtml;
+                    const fragment = document.createDocumentFragment();
+                    while (div.firstChild) {
+                        fragment.appendChild(div.firstChild);
+                    }
+                    range.insertNode(fragment);
+                } else {
+                    // Insertar al final si no hay selección
+                    preview.innerHTML += imgHtml;
+                }
+                
+                updateCodeFromPreview();
+                hideImageModal();
+                showNotification('Imagen insertada correctamente');
+            }
+            
+            // Función para mostrar el modal de tabla
+            function showTableModal() {
+                tableModal.style.display = 'flex';
+                updateTableGrid();
+            }
+            
+            // Función para actualizar la cuadrícula de la tabla
+            function updateTableGrid() {
+                const rows = parseInt(tableRowsInput.value) || 3;
+                const cols = parseInt(tableColsInput.value) || 3;
+                
+                // Actualizar la cuadrícula
+                tableGrid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+                tableGrid.innerHTML = '';
+                
+                for (let r = 0; r < rows; r++) {
+                    for (let c = 0; c < cols; c++) {
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.placeholder = `F${r+1}C${c+1}`;
+                        input.dataset.row = r;
+                        input.dataset.col = c;
+                        tableGrid.appendChild(input);
+                    }
+                }
+            }
+            
+            // Función para ocultar el modal de tabla
+            function hideTableModal() {
+                tableModal.style.display = 'none';
+            }
+            
+            // Función para insertar la tabla en el contenido
+            function insertTable() {
+                const rows = parseInt(tableRowsInput.value) || 3;
+                const cols = parseInt(tableColsInput.value) || 3;
+                
+                // Crear la tabla HTML
+                let tableHtml = '<table>';
+                
+                // Crear las celdas de la tabla
+                for (let r = 0; r < rows; r++) {
+                    tableHtml += '<tr>';
+                    for (let c = 0; c < cols; c++) {
+                        const input = tableGrid.querySelector(`input[data-row="${r}"][data-col="${c}"]`);
+                        const cellContent = input ? input.value : '';
+                        
+                        if (r === 0) {
+                            tableHtml += `<th>${cellContent}</th>`;
+                        } else {
+                            tableHtml += `<td>${cellContent}</td>`;
+                        }
+                    }
+                    tableHtml += '</tr>';
+                }
+                
+                tableHtml += '</table>';
+                
+                // Insertar la tabla en la posición de la selección
+                if (lastSelection && !lastSelection.isCollapsed) {
+                    const range = lastSelection.getRangeAt(0);
+                    range.deleteContents();
+                    const div = document.createElement('div');
+                    div.innerHTML = tableHtml;
+                    const fragment = document.createDocumentFragment();
+                    while (div.firstChild) {
+                        fragment.appendChild(div.firstChild);
+                    }
+                    range.insertNode(fragment);
+                } else {
+                    // Insertar al final si no hay selección
+                    preview.innerHTML += tableHtml;
+                }
+                
+                updateCodeFromPreview();
+                hideTableModal();
+                showNotification('Tabla insertada correctamente');
+            }
+            
+            // Función para mostrar en el código la posición del elemento seleccionado
+            function showInCode() {
+                if (!currentSelectedElement) return;
+                
+                const element = currentSelectedElement;
+                const outerHTML = element.outerHTML;
+                const startIndex = htmlCode.value.indexOf(outerHTML);
+                
+                if (startIndex !== -1) {
+                    htmlCode.focus();
+                    htmlCode.setSelectionRange(startIndex, startIndex + outerHTML.length);
+                    
+                    // Scroll a la posición
+                    const lines = htmlCode.value.substr(0, startIndex).split('\n');
+                    const line = lines.length;
+                    const lineHeight = parseInt(getComputedStyle(htmlCode).lineHeight);
+                    htmlCode.scrollTop = (line - 5) * lineHeight;
+                }
+            }
+            
+            // Agregar event listeners para clic derecho
+            function addRightClickListeners() {
+                const elements = preview.querySelectorAll('*');
+                elements.forEach(el => {
+                    el.addEventListener('contextmenu', showContextMenu);
+                });
+            }
+            
+            // Actualizar panel de navegación
+            function updateNavigationPanel() {
+                const headings = preview.querySelectorAll('h1, h2, h3, h4, h5, h6');
+                const navItems = document.getElementById('nav-items');
+                
+                navItems.innerHTML = '';
+                
+                if (headings.length === 0) {
+                    navItems.innerHTML = '<p>No se encontraron encabezados</p>';
+                    return;
+                }
+                
+                headings.forEach((heading, index) => {
+                    const level = parseInt(heading.tagName.substring(1));
+                    const item = document.createElement('div');
+                    item.classList.add('nav-item');
+                    item.style.paddingLeft = `${(level - 1) * 15}px`;
+                    item.textContent = heading.textContent;
+                    item.dataset.index = index;
+                    
+                    item.addEventListener('click', () => {
+                        heading.scrollIntoView({ behavior: 'smooth' });
+                    });
+                    
+                    navItems.appendChild(item);
+                });
+            }
+            
+            // Actualizar código desde la vista previa
+            function updateCodeFromPreview() {
+                htmlCode.value = preview.innerHTML;
+                updateLineNumbers();
+            }
+            
+            // Alternar panel de navegación
+            function toggleNavigationPanel() {
+                navPanel.classList.toggle('active');
+                if (navPanel.classList.contains('active')) {
+                    toggleNav.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                } else {
+                    toggleNav.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                }
+            }
+            
+            // Alternar pantalla completa
+            function toggleFullscreen() {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => {
+                        console.error(`Error al intentar entrar en modo pantalla completa: ${err.message}`);
+                    });
+                    fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i> Salir Pantalla Completa';
+                    isFullscreen = true;
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    }
+                    fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> Pantalla Completa';
+                    isFullscreen = false;
+                }
+            }
+            
+            // Inicializar
+            updateLineNumbers();
+            updatePreview();
+            
+            // Event Listeners
+            htmlCode.addEventListener('input', function() {
+                updateLineNumbers();
+                updatePreview();
+            });
+            
+            htmlCode.addEventListener('scroll', function() {
+                lineNumbers.scrollTop = htmlCode.scrollTop;
+                preview.scrollTop = htmlCode.scrollTop;
+            });
+            
+            preview.addEventListener('scroll', function() {
+                htmlCode.scrollTop = preview.scrollTop;
+            });
+            
+            htmlCode.addEventListener('keyup', function(e) {
+                const lines = htmlCode.value.substr(0, htmlCode.selectionStart).split('\n');
+                const line = lines.length;
+                const lineHeight = parseInt(getComputedStyle(htmlCode).lineHeight);
+                currentLine.style.top = `${(line - 1) * lineHeight + 15}px`;
+            });
+            
+            clearBtn.addEventListener('click', function() {
+                htmlCode.value = '';
+                updateLineNumbers();
+                updatePreview();
+                showNotification('Editor limpiado');
+            });
+            
+            downloadBtn.addEventListener('click', function() {
+                const blob = new Blob([htmlCode.value], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'documento.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showNotification('Documento descargado');
+            });
+            
+            loadBtn.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function() {
+                if (fileInput.files.length > 0) {
+                    loadFile(fileInput.files[0]);
+                }
+            });
+            
+            dropZone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                dropZone.classList.add('active');
+            });
+            
+            dropZone.addEventListener('dragleave', function() {
+                dropZone.classList.remove('active');
+            });
+            
+            dropZone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                dropZone.classList.remove('active');
+                
+                if (e.dataTransfer.files.length > 0) {
+                    loadFile(e.dataTransfer.files[0]);
+                }
+            });
+            
+            zoomInBtn.addEventListener('click', function() {
+                if (currentZoom < 200) {
+                    adjustZoom(currentZoom + 10);
+                }
+            });
+            
+            zoomOutBtn.addEventListener('click', function() {
+                if (currentZoom > 50) {
+                    adjustZoom(currentZoom - 10);
+                }
+            });
+            
+            document.addEventListener('click', hideContextMenu);
+            
+            contextMenu.addEventListener('click', function(e) {
+                if (e.target.dataset.action) {
+                    handleContextMenuAction(e.target.dataset.action);
+                }
+            });
+            
+            navBtn.addEventListener('click', toggleNavigationPanel);
+            
+            toggleNav.addEventListener('click', toggleNavigationPanel);
+            
+            closeNav.addEventListener('click', function() {
+                navPanel.classList.remove('active');
+                toggleNav.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            });
+            
+            searchBtn.addEventListener('click', function() {
+                const searchText = searchInput.value.trim();
+                if (searchText) {
+                    const textNodes = [];
+                    const walker = document.createTreeWalker(preview, NodeFilter.SHOW_TEXT, null, false);
+                    
+                    let node;
+                    while (node = walker.nextNode()) {
+                        if (node.textContent.includes(searchText)) {
+                            textNodes.push(node);
+                        }
+                    }
+                    
+                    if (textNodes.length > 0) {
+                        const range = document.createRange();
+                        range.selectNodeContents(textNodes[0]);
+                        range.collapse(false);
+                        const sel = window.getSelection();
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                        textNodes[0].parentElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+            
+            fullscreenBtn.addEventListener('click', toggleFullscreen);
+            
+            // Event listeners para el modal de imagen
+            insertImageBtn.addEventListener('click', insertImage);
+            
+            cancelImageBtn.addEventListener('click', hideImageModal);
+            
+            // Event listeners para el modal de tabla
+            tableRowsInput.addEventListener('input', updateTableGrid);
+            tableColsInput.addEventListener('input', updateTableGrid);
+            
+            insertTableBtn.addEventListener('click', insertTable);
+            
+            cancelTableBtn.addEventListener('click', hideTableModal);
+            
+            // Event listeners para cerrar modales
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    modal.style.display = 'none';
+                });
+            });
+            
+            // Cerrar modales al hacer clic fuera del contenido
+            window.addEventListener('click', function(e) {
+                if (e.target === imageModal) {
+                    hideImageModal();
+                }
+                if (e.target === tableModal) {
+                    hideTableModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

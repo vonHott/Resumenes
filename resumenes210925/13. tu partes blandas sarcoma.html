@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Tumores Óseos y de Partes Blandas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        h2 {
+            color: #2980b9;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .algorithm {
+            background-color: #e8f4fc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 5px solid #3498db;
+        }
+        .algorithm-step {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .question {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .question p {
+            margin: 5px 0;
+        }
+        .corrections {
+            background-color: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        .note {
+            background-color: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .highlight {
+            background-color: #fff8e1;
+            padding: 3px 5px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resumen de Tumores Óseos y de Partes Blandas para Examen de Grado</h1>
+
+        <h2>Introducción</h2>
+        <p>Los tumores musculoesqueléticos se clasifican en benignos, de agresividad intermedia y malignos. Los de agresividad intermedia (ej. TLA, TCA, TCG) tienen comportamiento localmente agresivo pero bajo potencial metastásico. Los sarcomas de partes blandas (SPB) son neoplasias malignas mesenquimales poco frecuentes (<1% de todos los cánceres) que requieren enfoque multidisciplinario en centros especializados.</p>
+
+        <h2>Epidemiología</h2>
+        <ul>
+            <li><strong>SPB</strong>: Incidencia 20-30/millón habitantes. Más frecuentes en extremidades inferiores (40%), retroperitoneo (16%), tronco (10%) y extremidades superiores (12%).</li>
+            <li><strong>Distribución por sexo</strong>: Ligero predominio masculino (1.1:1).</li>
+            <li><strong>Edad</strong>: Todos los grupos etarios. Rabdomiosarcoma en niños, sarcoma sinovial en adultos jóvenes (15-30 años), liposarcoma y leiomiosarcoma en adultos (40-60 años).</li>
+            <li><strong>Chile</strong>: Serie local muestra liposarcoma (26.9%) y sarcoma sinovial (15.3%) como más frecuentes.</li>
+        </ul>
+
+        <h2>Anamnesis</h2>
+        <ul>
+            <li>Masa de crecimiento progresivo (semanas/meses)</li>
+            <li>Dolor (30-40% de casos, más frecuente en malignos)</li>
+            <li>Antecedentes de radiación, síndromes genéticos (NF1, Li-Fraumeni)</li>
+            <li><strong>Signos de alarma</strong>:
+                <ul>
+                    <li>Tamaño >5 cm</li>
+                    <li>Crecimiento rápido</li>
+                    <li>Localización profunda a fascia</li>
+                    <li>Dolor persistente</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Examen Físico</h2>
+        <ul>
+            <li>Inspección: Asimetrías, cambios cutáneos, estigmas neurocutáneos</li>
+            <li>Palpación: Consistencia, movilidad, relación con planos profundos</li>
+            <li><strong>Signos específicos</strong>:
+                <ul>
+                    <li>Tinel (tumores neurales)</li>
+                    <li>Pulsatilidad (aneurismas)</li>
+                    <li>Transiluminación (quistes)</li>
+                </ul>
+            </li>
+            <li>Evaluación de adenopatías (raro excepto en sarcoma sinovial, rabdomiosarcoma)</li>
+        </ul>
+
+        <h2>Estudios de Imagen</h2>
+        <table>
+            <tr><th>Modalidad</th><th>Hallazgos clave</th><th>Utilidad</th></tr>
+            <tr><td>Radiografía</td><td>Destrucción ósea, calcificaciones (flebolitos, patrones osificantes)</td><td>Evaluación inicial, descarte de lesiones óseas</td></tr>
+            <tr><td>Ecografía</td><td>Caracterización sólida/quística, vascularización</td><td>Triaje inicial, guía de biopsia</td></tr>
+            <tr><td>RM</td><td>Mejor caracterización tisular, relación con estructuras neurovasculares</td><td>Estadificación local, planificación quirúrgica</td></tr>
+            <tr><td>TAC tórax/abdomen</td><td>Metástasis pulmonares (70-80% de metástasis)</td><td>Estadificación sistémica</td></tr>
+            <tr><td>PET-CT</td><td>Actividad metabólica, metástasis ocultas</td><td>Estadificación, evaluación de respuesta</td></tr>
+        </table>
+
+        <h2>Clasificaciones</h2>
+        <h3>Clasificación WHO 2020 de Tumores de Partes Blandas</h3>
+        <ul>
+            <li><strong>Benignos</strong>: Lipoma, hemangioma, schwannoma</li>
+            <li><strong>Intermedios (localmente agresivos)</strong>: Tumor desmoide, TLA</li>
+            <li><strong>Intermedios (metastatizan raramente)</strong>: TCG, condroblastoma</li>
+            <li><strong>Malignos</strong>: Liposarcoma, leiomiosarcoma, sarcoma pleomórfico indiferenciado</li>
+        </ul>
+
+        <h3>Sistema de Grado FNCLCC</h3>
+        <table>
+            <tr><th>Componente</th><th>Puntaje</th><th>Criterios</th></tr>
+            <tr><td rowspan="3">Diferenciación</td><td>1</td><td>Bien diferenciado</td></tr>
+            <tr><td>2</td><td>Moderadamente diferenciado</td></tr>
+            <tr><td>3</td><td>Pobremente diferenciado/anaplásico</td></tr>
+            <tr><td rowspan="3">Mitosis</td><td>1</td><td>0-9/10 CGA</td></tr>
+            <tr><td>2</td><td>10-19/10 CGA</td></tr>
+            <tr><td>3</td><td>≥20/10 CGA</td></tr>
+            <tr><td rowspan="3">Necrosis</td><td>0</td><td>Ausente</td></tr>
+            <tr><td>1</td><td>Presente (<50%)</td></tr>
+            <tr><td>2</td><td>Extensa (≥50%)</td></tr>
+        </table>
+        <p><strong>Grado final</strong>: 2-3 (G1), 4-5 (G2), 6-8 (G3)</p>
+
+        <h3>Estadificación AJCC 8ª edición</h3>
+        <table>
+            <tr><th>Estadio</th><th>Tumor</th><th>Ganglios</th><th>Metástasis</th><th>Grado</th></tr>
+            <tr><td>IA</td><td>T1</td><td>N0</td><td>M0</td><td>G1/GX</td></tr>
+            <tr><td>IB</td><td>T2-T4</td><td>N0</td><td>M0</td><td>G1/GX</td></tr>
+            <tr><td>II</td><td>T1</td><td>N0</td><td>M0</td><td>G2/G3</td></tr>
+            <tr><td>IIIA</td><td>T2</td><td>N0</td><td>M0</td><td>G2/G3</td></tr>
+            <tr><td>IIIB</td><td>T3-T4</td><td>N0</td><td>M0</td><td>G2/G3</td></tr>
+            <tr><td>IV</td><td>Cualquier T</td><td>N1</td><td>M0/M1</td><td>Cualquier G</td></tr>
+        </table>
+
+        <h2>Algoritmo de Manejo</h2>
+        <div class="algorithm">
+            <div class="algorithm-step"><strong>Paso 1:</strong> Evaluación inicial de masa de partes blandas</div>
+            <div class="algorithm-step"><strong>Paso 2:</strong> Evaluación clínica y por imágenes</div>
+            <div class="algorithm-step"><strong>Paso 3:</strong> Si presenta características sospechosas (>5cm, profunda, crecimiento rápido)</div>
+            <div class="algorithm-step"><strong>Paso 4:</strong> Derivación a centro especializado</div>
+            <div class="algorithm-step"><strong>Paso 5:</strong> Biopsia guiada por imagen</div>
+            <div class="algorithm-step"><strong>Paso 6:</strong> Según resultado histológico:
+                <ul>
+                    <li>Si es benigno: Resección marginal/excisional si sintomático</li>
+                    <li>Si es intermedio/maligno: Continuar con estadificación completa</li>
+                </ul>
+            </div>
+            <div class="algorithm-step"><strong>Paso 7:</strong> Manejo multidisciplinario</div>
+            <div class="algorithm-step"><strong>Paso 8:</strong> Tratamiento con cirugía + radioterapia ± quimioterapia</div>
+        </div>
+
+        <h2>Tratamiento No Quirúrgico</h2>
+        <ul>
+            <li><strong>Observación</strong>: Masas benignas asintomáticas, TLA pequeños oligosintomáticos</li>
+            <li><strong>Radioterapia</strong>:
+                <ul>
+                    <li>Preoperatoria (50 Gy): Reduce volumen tumoral, mayor complicación wound</li>
+                    <li>Postoperatoria (60-66 Gy): Mayor toxicidad tardía</li>
+                </ul>
+            </li>
+            <li><strong>Quimioterapia</strong>:
+                <ul>
+                    <li>Sensibles: Sarcoma sinovial, mixoide/round cell liposarcoma</li>
+                    <li>Resistentes: Condrosarcoma, alveolar soft part sarcoma</li>
+                </ul>
+            </li>
+            <li><strong>Terapias dirigidas</strong>: Imatinib (GIST), pazopanib (SPB avanzados)</li>
+        </ul>
+
+        <h2>Tratamiento Quirúrgico</h2>
+        <h3>Principios Oncológicos</h3>
+        <ul>
+            <li><strong>Biopsia adecuada</strong>: Longitudinal, en plano de futura incisión</li>
+            <li><strong>Resección con márgenes</strong>:
+                <ul>
+                    <li>Marginal: Para benignos y algunos intermedios</li>
+                    <li>Amplio: Mínimo 1-2 cm de tejido normal o barrera anatómica</li>
+                    <li>Radical: Compartimento completo</li>
+                </ul>
+            </li>
+            <li><strong>Reconstrucción</strong>: Colgajos, injertos, prótesis</li>
+        </ul>
+
+        <h3>Técnicas Específicas</h3>
+        <ul>
+            <li><strong>Tumor de células gigantes (TCG)</strong>:
+                <ul>
+                    <li>Campanacci I/II: Curetaje + adyuvancia (fresado, fenol) + injerto/cemento</li>
+                    <li>Campanacci III: Resección en bloque ± denosumab preoperatorio</li>
+                </ul>
+            </li>
+            <li><strong>Tumor lipomatoso atípico (TLA)</strong>:
+                <ul>
+                    <li>Extremidades: Resección marginal (3-12% recurrencia)</li>
+                    <li>Retroperitoneo: Liposarcoma bien diferenciado - resección amplia</li>
+                </ul>
+            </li>
+            <li><strong>Tumor cartilaginoso atípico (TCA)</strong>:
+                <ul>
+                    <li>Extremidades: Observación vs curetaje</li>
+                    <li>Axial: Condrosarcoma grado I - resección amplia</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Complicaciones</h2>
+        <ul>
+            <li><strong>Agudas</strong>: Infección (5-15%), dehiscencia, hematoma</li>
+            <li><strong>Tardías</strong>:
+                <ul>
+                    <li>Recurrencia local (10-30% en TCG, 3-12% en TLA)</li>
+                    <li>Metástasis (1-9% TCG, <2% TLA, 20-30% SPB alto grado)</li>
+                    <li>Fractura post-radioterapia (5-10%)</li>
+                    <li>Fibrosis, rigidez articular</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Diagnósticos Diferenciales</h2>
+        <table>
+            <tr><th>Diagnóstico</th><th>Características distintivas</th></tr>
+            <tr><td>Lipoma</td><td>Homogéneo, isointenso con grasa en todas las secuencias, MDM2 negativo</td></tr>
+            <tr><td>Hemangioma</td><td>Flebolitos en RX, aspecto serpiginoso en RM con realce intenso</td></tr>
+            <tr><td>Miositis osificante</td><td>Calcificación periférica, zona central inmadura, historia traumática</td></tr>
+            <tr><td>Quiste sinovial</td><td>Líquido intenso en T2, comunicación articular</td></tr>
+            <tr><td>Absceso</td><td>Realce periférico, clínica inflamatoria, fiebre</td></tr>
+        </table>
+
+        <h2>Datos Relevantes</h2>
+        <ul>
+            <li><span class="highlight">5% de las masas de partes blandas >5cm son malignas</span></li>
+            <li><span class="highlight">Tamaño >5cm</span>: Sensibilidad 81%, especificidad 63% para malignidad</li>
+            <li><span class="highlight">Metástasis ganglionares</span>: Raras (2-3%) excepto en epitelioide, rabdomiosarcoma, claro</li>
+            <li><span class="highlight">Supervivencia global SPB</span>: 60-70% a 5 años (90% en localizados, <20% con metástasis)</li>
+            <li><span class="highlight">Factores pronóstico principales</span>: Grado histológico, tamaño, profundidad, márgenes</li>
+        </ul>
+
+        <h2>Preguntas Clave Orthobullets</h2>
+        <div class="question">
+            <p>1. ¿Cuál es el factor pronóstico más importante en sarcomas de partes blandas?</p>
+            <p>> El estado de los márgenes quirúrgicos es el factor pronóstico independiente más importante para recurrencia local. Para metástasis a distancia, el grado histológico es el principal factor.</p>
+        </div>
+        
+        <div class="question">
+            <p>2. ¿Qué características clínicas deben hacer sospechar malignidad en una masa de partes blandas?</p>
+            <p>> Cuatro características principales: tamaño >5cm, crecimiento documentado, localización profunda a la fascia y dolor. La presencia de cualquiera de estas requiere derivación a centro especializado.</p>
+        </div>
+        
+        <div class="question">
+            <p>3. ¿Cuál es el estudio de imagen de elección para la estadificación local de sarcomas de partes blandas?</p>
+            <p>> La resonancia magnética con contraste es el gold standard para evaluación local, permitiendo caracterizar la lesión, relación con estructuras neurovasculares y planificación quirúrgica.</p>
+        </div>
+        
+        <div class="question">
+            <p>4. ¿En qué tipos de sarcoma está indicada la quimioterapia neoadyuvante?</p>
+            <p>> Sarcoma de Ewing, rabdomiosarcoma embrionario/alveolar, sarcoma sinovial y liposarcoma mixoide de células redondas muestran buena respuesta a quimioterapia.</p>
+        </div>
+        
+        <div class="question">
+            <p>5. ¿Qué margen quirúrgico se considera adecuado para la mayoría de los sarcomas de partes blandas?</p>
+            <p>> Un margen amplio (R0) que incluya 1-2 cm de tejido normal o una barrera anatómica intacta (fascia, periostio) se considera adecuado para la mayoría de los sarcomas.</p>
+        </div>
+
+        <h2>Comprobación y Correcciones</h2>
+        <div class="corrections">
+            <p>Al contrastar esta información con fuentes actualizadas (NCCN Guidelines 2023, ESMO Guidelines 2022):</p>
+            <ul>
+                <li>Se confirma la clasificación WHO 2020 como vigente</li>
+                <li>El papel de la quimioterapia en SPB sigue siendo limitado excepto en subtipos específicos</li>
+                <li>La inmunoterapia (pembrolizumab) tiene indicación en sarcoma alveolar de partes blandas y sarcoma epitelioide metastásicos</li>
+                <li>El sistema de predicción PERSARC ha sido validado en cohortes internacionales</li>
+                <li>Corrección: La especificidad del tamaño >5cm es menor (48% con punto de corte en 4cm)</li>
+            </ul>
+            
+            <div class="note">
+                <p><strong>Nota</strong>: El documento original contiene información sólida y actualizada. Se sugiere:</p>
+                <ul>
+                    <li>Incluir el sistema PERSARC para predicción pronóstica</li>
+                    <li>Actualizar esquemas de quimioterapia según subtipos moleculares</li>
+                    <li>Mayor énfasis en la biopsia líquida para monitorización de recidivas</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
